@@ -1,0 +1,27 @@
+{
+  "name": "mento-subgraph-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "graph:testnet:compile": "npx graph-compiler --config config.testnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "graph:testnet:deploy": "npx graph deploy --studio mento ./generated/mento.testnet.subgraph.yaml",
+    "graph:mainnet:compile": "npx graph-compiler --config config.mainnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "graph:mainnet:deploy": "npx graph deploy --studio mento ./generated/mento.mainnet.subgraph.yaml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@amxx/graphprotocol-utils": "^1.1.0",
+    "@graphprotocol/graph-cli": "^0.65.0",
+    "@graphprotocol/graph-ts": "^0.32.0",
+    "@openzeppelin/contracts": "^4.8.1",
+    "@openzeppelin/subgraphs": "mento-protocol/openzeppelin-subgraphs"
+  },
+  "overrides": {
+    "@graphprotocol/graph-cli": "^0.65.0",
+    "@graphprotocol/graph-ts": "^0.32.0"
+  }
+}

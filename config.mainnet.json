@@ -1,0 +1,28 @@
+{
+  "output": "generated/mento.mainnet.",
+  "chain": "celo",
+  "datasources": [
+    {
+      "address": "Locking.sol address",
+      "startBlock": 0,
+      "module": [
+        "voting"
+      ]
+    },
+    {
+      "address": "TimelockController.sol address",
+      "startBlock": 0,
+      "module": [
+        "timelock",
+        "accesscontrol"
+      ]
+    },
+    {
+      "address": "MentoGovernor.sol address",
+      "startBlock": 0,
+      "module": [
+        "governor"
+      ]
+    }
+  ]
+}

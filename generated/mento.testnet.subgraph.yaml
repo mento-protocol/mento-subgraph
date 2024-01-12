@@ -1,0 +1,106 @@
+specVersion: 0.0.4
+schema:
+  file: mento.testnet.schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: voting
+    network: celo-alfajores
+    source:
+      address: "0x298b7f5391CFF1F696D12620340DC75a704C1FBF"
+      abi: Voting
+      startBlock: 21934268
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Voting
+      abis:
+        - name: Voting
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IVotes.json
+      eventHandlers:
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/voting.ts
+  - kind: ethereum/contract
+    name: timelock
+    network: celo-alfajores
+    source:
+      address: "0x7737F5B91a64857Dacf65D5C5920C36C3F461C7a"
+      abi: Timelock
+      startBlock: 21934268
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Timelock
+      abis:
+        - name: Timelock
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/TimelockController.json
+      eventHandlers:
+        - event: CallScheduled(indexed bytes32,indexed uint256,address,uint256,bytes,bytes32,uint256)
+          handler: handleCallScheduled
+        - event: CallExecuted(indexed bytes32,indexed uint256,address,uint256,bytes)
+          handler: handleCallExecuted
+        - event: Cancelled(indexed bytes32)
+          handler: handleCancelled
+        - event: MinDelayChange(uint256,uint256)
+          handler: handleMinDelayChange
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/timelock.ts
+  - kind: ethereum/contract
+    name: accesscontrol
+    network: celo-alfajores
+    source:
+      address: "0x7737F5B91a64857Dacf65D5C5920C36C3F461C7a"
+      abi: AccessControl
+      startBlock: 21934268
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+  - kind: ethereum/contract
+    name: governor
+    network: celo-alfajores
+    source:
+      address: "0x30ceFfD1F5B5c045578b9Cfeec52fC03B5eE262D"
+      abi: Governor
+      startBlock: 21934268
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Governor
+      abis:
+        - name: Governor
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IGovernorTimelock.json
+      eventHandlers:
+        - event: ProposalCanceled(uint256)
+          handler: handleProposalCanceled
+        - event: ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)
+          handler: handleProposalCreated
+        - event: ProposalExecuted(uint256)
+          handler: handleProposalExecuted
+        - event: ProposalQueued(uint256,uint256)
+          handler: handleProposalQueued
+        - event: VoteCast(indexed address,uint256,uint8,uint256,string)
+          handler: handleVoteCast
+        - event: VoteCastWithParams(indexed address,uint256,uint8,uint256,string,bytes)
+          handler: handleVoteCastWithParams
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/governor.ts
