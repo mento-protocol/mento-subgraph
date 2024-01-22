@@ -3,23 +3,24 @@
   "chain": "celo-alfajores",
   "datasources": [
     {
-      "address": "0x298b7f5391CFF1F696D12620340DC75a704C1FBF",
-      "startBlock": 21934268,
+      "address": "0x8e1707307f04ec9742ad3d8e6d88ae5f506f83ca",
+      "startBlock": 21963085,
       "module": [
-        "voting"
+        "voting",
+        "locking"
       ]
     },
     {
-      "address": "0x7737F5B91a64857Dacf65D5C5920C36C3F461C7a",
-      "startBlock": 21934268,
+      "address": "0x97556c0f9c5b932a75d8dc3bb11eee59ab8cca4c",
+      "startBlock": 21963085,
       "module": [
         "timelock",
         "accesscontrol"
       ]
     },
     {
-      "address": "0x30ceFfD1F5B5c045578b9Cfeec52fC03B5eE262D",
-      "startBlock": 21934268,
+      "address": "0xc1d32e3bac67b28d31d7828c8ff160e44c37be1c",
+      "startBlock": 21963085,
       "module": [
         "governor"
       ]

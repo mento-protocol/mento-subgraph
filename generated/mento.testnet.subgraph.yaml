@@ -6,9 +6,9 @@ dataSources:
     name: voting
     network: celo-alfajores
     source:
-      address: "0x298b7f5391CFF1F696D12620340DC75a704C1FBF"
+      address: "0x8e1707307f04ec9742ad3d8e6d88ae5f506f83ca"
       abi: Voting
-      startBlock: 21934268
+      startBlock: 21963085
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -25,12 +25,38 @@ dataSources:
           handler: handleDelegateVotesChanged
       file: ../node_modules/@openzeppelin/subgraphs/src/datasources/voting.ts
   - kind: ethereum/contract
+    name: locking
+    network: celo-alfajores
+    source:
+      address: "0x8e1707307f04ec9742ad3d8e6d88ae5f506f83ca"
+      abi: Locking
+      startBlock: 21963085
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Locking
+      abis:
+        - name: Locking
+          file: ..//contracts/ILocking.json
+      eventHandlers:
+        - event: LockCreate(indexed uint256,indexed address,indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLockCreate
+        - event: Relock(indexed uint256,indexed address,indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleRelock
+        - event: Delegate(indexed uint256,indexed address,indexed address,uint256)
+          handler: handleDelegate
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ../src/datasources/locking.ts
+  - kind: ethereum/contract
     name: timelock
     network: celo-alfajores
     source:
-      address: "0x7737F5B91a64857Dacf65D5C5920C36C3F461C7a"
+      address: "0x97556c0f9c5b932a75d8dc3bb11eee59ab8cca4c"
       abi: Timelock
-      startBlock: 21934268
+      startBlock: 21963085
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -54,9 +80,9 @@ dataSources:
     name: accesscontrol
     network: celo-alfajores
     source:
-      address: "0x7737F5B91a64857Dacf65D5C5920C36C3F461C7a"
+      address: "0x97556c0f9c5b932a75d8dc3bb11eee59ab8cca4c"
       abi: AccessControl
-      startBlock: 21934268
+      startBlock: 21963085
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -78,9 +104,9 @@ dataSources:
     name: governor
     network: celo-alfajores
     source:
-      address: "0x30ceFfD1F5B5c045578b9Cfeec52fC03B5eE262D"
+      address: "0xc1d32e3bac67b28d31d7828c8ff160e44c37be1c"
       abi: Governor
-      startBlock: 21934268
+      startBlock: 21963085
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6

@@ -1,0 +1,258 @@
+[
+  {
+    "name": "Account",
+    "fields": [
+      {
+        "name": "id",
+        "type": "Bytes!"
+      },
+      {
+        "name": "asLocking",
+        "type": "Locking"
+      },
+      {
+        "name": "locks",
+        "type": "Lock!",
+        "derived": "owner"
+      }
+    ]
+  },
+  {
+    "name": "Locking",
+    "immutable": true,
+    "fields": [
+      {
+        "name": "id",
+        "type": "Bytes!"
+      },
+      {
+        "name": "asAccount",
+        "type": "Account!"
+      },
+      {
+        "name": "mode",
+        "type": "String"
+      },
+      {
+        "name": "locks",
+        "type": "Lock!",
+        "derived": "locking"
+      },
+      {
+        "name": "lockCreate",
+        "type": "LockCreate!",
+        "derived": "locking"
+      },
+      {
+        "name": "relock",
+        "type": "Relock!",
+        "derived": "locking"
+      },
+      {
+        "name": "delegate",
+        "type": "Delegate!",
+        "derived": "locking"
+      },
+      {
+        "name": "withdraw",
+        "type": "Withdraw!",
+        "derived": "locking"
+      }
+    ]
+  },
+  {
+    "name": "Lock",
+    "fields": [
+      {
+        "name": "locking",
+        "type": "Locking!"
+      },
+      {
+        "name": "lockId",
+        "type": "BigInt!"
+      },
+      {
+        "name": "owner",
+        "type": "Account!"
+      },
+      {
+        "name": "delegate",
+        "type": "Account!"
+      },
+      {
+        "name": "time",
+        "type": "BigInt!"
+      },
+      {
+        "name": "amount",
+        "type": "BigInt!"
+      },
+      {
+        "name": "slope",
+        "type": "Int!"
+      },
+      {
+        "name": "cliff",
+        "type": "Int!"
+      },
+      {
+        "name": "replacedBy",
+        "type": "Lock"
+      },
+      {
+        "name": "replaces",
+        "type": "Lock"
+      },
+      {
+        "name": "relocked",
+        "type": "Boolean!"
+      },
+      {
+        "name": "lockCreate",
+        "type": "LockCreate!",
+        "derived": "lock"
+      },
+      {
+        "name": "relock",
+        "type": "Relock!",
+        "derived": "oldLock"
+      }
+    ]
+  },
+  {
+    "name": "LockCreate",
+    "parent": "Event",
+    "immutable": true,
+    "fields": [
+      {
+        "name": "emitter",
+        "type": "Account!"
+      },
+      {
+        "name": "transaction",
+        "type": "Transaction!"
+      },
+      {
+        "name": "timestamp",
+        "type": "BigInt!"
+      },
+      {
+        "name": "locking",
+        "type": "Locking!"
+      },
+      {
+        "name": "lock",
+        "type": "Lock!"
+      },
+      {
+        "name": "owner",
+        "type": "Account!"
+      }
+    ]
+  },
+  {
+    "name": "Relock",
+    "parent": "Event",
+    "immutable": true,
+    "fields": [
+      {
+        "name": "emitter",
+        "type": "Account!"
+      },
+      {
+        "name": "transaction",
+        "type": "Transaction!"
+      },
+      {
+        "name": "timestamp",
+        "type": "BigInt!"
+      },
+      {
+        "name": "locking",
+        "type": "Locking!"
+      },
+      {
+        "name": "newLock",
+        "type": "Lock!"
+      },
+      {
+        "name": "oldLock",
+        "type": "Lock!"
+      },
+      {
+        "name": "owner",
+        "type": "Account!"
+      }
+    ]
+  },
+  {
+    "name": "Delegate",
+    "parent": "Event",
+    "immutable": true,
+    "fields": [
+      {
+        "name": "emitter",
+        "type": "Account!"
+      },
+      {
+        "name": "transaction",
+        "type": "Transaction!"
+      },
+      {
+        "name": "timestamp",
+        "type": "BigInt!"
+      },
+      {
+        "name": "locking",
+        "type": "Locking!"
+      },
+      {
+        "name": "lock",
+        "type": "Lock!"
+      },
+      {
+        "name": "owner",
+        "type": "Account!"
+      },
+      {
+        "name": "delegate",
+        "type": "Account!"
+      }
+    ]
+  },
+  {
+    "name": "Withdraw",
+    "parent": "Event",
+    "immutable": true,
+    "fields": [
+      {
+        "name": "emitter",
+        "type": "Account!"
+      },
+      {
+        "name": "transaction",
+        "type": "Transaction!"
+      },
+      {
+        "name": "timestamp",
+        "type": "BigInt!"
+      },
+      {
+        "name": "locking",
+        "type": "Locking!"
+      },
+      {
+        "name": "lock",
+        "type": "Lock!"
+      },
+      {
+        "name": "owner",
+        "type": "Account!"
+      },
+      {
+        "name": "amount",
+        "type": "BigInt!"
+      }
+    ]
+  }
+]
