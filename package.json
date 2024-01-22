@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "graph:testnet:compile": "npx graph-compiler --config config.testnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "graph:testnet:compile": "npx graph-compiler --config config.testnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --include src/datasources --export-schema --export-subgraph",
+    "graph:testnet:build": "npx graph build ./generated/mento.testnet.subgraph.yaml",
     "graph:testnet:deploy": "npx graph deploy --studio mento ./generated/mento.testnet.subgraph.yaml",
-    "graph:mainnet:compile": "npx graph-compiler --config config.mainnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "graph:mainnet:compile": "npx graph-compiler --config config.mainnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --include src/datasources --export-schema --export-subgraph",
+    "graph:mainnet:build": "npx graph build ./generated/mento.mainnet.subgraph.yaml",
     "graph:mainnet:deploy": "npx graph deploy --studio mento ./generated/mento.mainnet.subgraph.yaml"
   },
   "keywords": [],
@@ -18,7 +20,7 @@
     "@graphprotocol/graph-cli": "^0.65.0",
     "@graphprotocol/graph-ts": "^0.32.0",
     "@openzeppelin/contracts": "^4.8.1",
-    "@openzeppelin/subgraphs": "mento-protocol/openzeppelin-subgraphs"
+    "@openzeppelin/subgraphs": "openzeppelin/openzeppelin-subgraphs"
   },
   "overrides": {
     "@graphprotocol/graph-cli": "^0.65.0",
