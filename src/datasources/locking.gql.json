@@ -242,10 +242,6 @@
         "type": "Locking!"
       },
       {
-        "name": "lock",
-        "type": "Lock!"
-      },
-      {
         "name": "owner",
         "type": "Account!"
       },

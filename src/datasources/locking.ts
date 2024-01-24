@@ -75,6 +75,8 @@ export function handleDelegate(event: DelegateEvent): void {
 
   let ev = new Delegate(events.id(event));
   ev.emitter = locking.id;
+  ev.locking = locking.id;
+  ev.lock = lock.id;
   ev.transaction = transactions.log(event).id;
   ev.timestamp = event.block.timestamp;
   ev.owner = event.params.account;
@@ -87,6 +89,7 @@ export function handleWithdraw(event: WithdrawEvent): void {
 
   let ev = new Withdraw(events.id(event));
   ev.emitter = locking.id;
+  ev.locking = locking.id;
   ev.transaction = transactions.log(event).id;
   ev.timestamp = event.block.timestamp;
   ev.owner = event.params.account;
