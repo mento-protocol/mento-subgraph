@@ -52,6 +52,7 @@ export function handleRelock(event: RelockEvent): void {
   newLock.slope = event.params.slopePeriod.toI32();
   newLock.cliff = event.params.cliff.toI32();
   newLock.replaces = oldLock.id;
+  newLock.relocked = false;
   newLock.save();
 
   let ev = new Relock(events.id(event));
