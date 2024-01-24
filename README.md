@@ -4,20 +4,47 @@ This package uses [openzeppelin-subgraphs](https://github.com/mento-protocol/ope
 
 ## Commands
 
-### `npm run graph:<target>:compile`
+### `npm run <target>:build-all`
 
 > target can be `testnet` or `mainnet`
 
+This runs the following commands:
+
+- `npm run <target>:clean`
+- `npm run <target>:compile`
+- `npm run <target>:codegen`
+
+Will execute all the steps needed to prepare a deployment starting from a clean slate.
+
+### `npm run <target>:compile`
+
+> target can be `testnet` or `mainnet`
+
+This step is handled by the `graph-compiler` package which composes together _modules_ configured on addresses, to generate a full graph specification that can be deploy to The Graph.
+
 This will generate:
 
-- `<target>/mento.schema.graphql`
-- `<target>/mento.subgraph.yaml`
+- `generated/mento.<target>.schema.graphql`
+- `generated/mento.<target>.subgraph.yaml`
 
 This should be run when we change `config.<target>.json`
 
-### `npm run graph:<target>:deploy`
+### `npm run <target>:codegen`
 
-This will deploy the regenerated subgraph.
+> target can be `testnet` or `mainnet`
+
+This step is handled by `graph-cli` and will generate utility types from ABI definitions, that are used in the WASM handlers.
+
+### `npm run <target>:build`
+
+> target can be `testnet` or `mainnet`
+
+This step is handled by `graph-cli` and will compile all the code in the final binary form needed for the Graph deployment.
+You don't usually have to run this step separately as it also happens a part of the `deploy` comand inside of `graph-cli`.
+
+### `npm run <target>:deploy`
+
+This will deploy the generated subgraph.
 Sometimes this results in a `socket hang up` error. Wait for a bit and retry.
 You will be asked to provide a version label, check the graph dashboard for the latest version and increment it.
 
