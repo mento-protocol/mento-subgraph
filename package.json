@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "auth": "npx graph auth",
+    "auth": "npx graph auth --product hosted-service",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./generated",
     "testnet:compile": "npx graph-compiler --config config.testnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --include src/datasources --export-schema --export-subgraph",
