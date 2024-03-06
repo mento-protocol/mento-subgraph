@@ -2,7 +2,19 @@
 
 This package uses [openzeppelin-subgraphs](https://github.com/mento-protocol/openzeppelin-subgraphs) in order to compose the Mento subgraph.
 
+## How do I access the subgraph dashboard on thegraph.com?
+
+For the Alfajores subgraph, use our shared test wallet from LastPass to log in to <https://thegraph.com/studio/subgraph/mento-alfajores/>
+
+For Mainnet, we will deploy a Gnosis Safe when the time comes.
+
 ## Commands
+
+### `npm run auth`
+
+Will ask you to enter the deploy key (can be found on [the subgraph dashboard](https://thegraph.com/studio/subgraph/mento-alfajores/))
+
+Without a deploy key you won't be able to deploy.
 
 ### `npm run <target>:build-all`
 
