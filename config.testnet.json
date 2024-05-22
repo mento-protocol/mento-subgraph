@@ -3,7 +3,7 @@
   "chain": "celo-alfajores",
   "datasources": [
     {
-      "address": "0x8e1707307f04ec9742ad3d8e6d88ae5f506f83ca",
+      "address": "0x537CaE97C588C6DA64A385817F3D3563DDCf0591",
       "startBlock": 21963085,
       "module": [
         "voting",
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "address": "0x97556c0f9c5b932a75d8dc3bb11eee59ab8cca4c",
+      "address": "0xa0Ad8DD40104556122c21dF50eD14bb1B53A3338",
       "startBlock": 21963085,
       "module": [
         "timelock",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "address": "0xc1d32e3bac67b28d31d7828c8ff160e44c37be1c",
+      "address": "0x558e92236f85Bb4e8A63ec0D5Bf9d34087Eab744",
       "startBlock": 21963085,
       "module": [
         "governor"
