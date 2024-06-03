@@ -1,0 +1,21 @@
+{
+   "output": "generated/mento.alfajores-test.",
+   "chain": "celo-alfajores",
+   "datasources": [
+      {
+         "address": "0xb254A5c05F11bcBedf2ac3cECeC9d85178340Dba",
+         "startBlock": 21963085,
+         "module": ["voting", "locking"]
+      },
+      {
+         "address": "0xBDE5DCCC62E97BB2083D8aC995765f19f0aD543D",
+         "startBlock": 21963085,
+         "module": ["timelock", "accesscontrol"]
+      },
+      {
+         "address": "0x887a1d60505a2bFc9e2eD798Cc251CEb8ddF07B8",
+         "startBlock": 21963085,
+         "module": ["governor"]
+      }
+   ]
+}
