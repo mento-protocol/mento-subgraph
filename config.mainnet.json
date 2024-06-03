@@ -1,28 +1,21 @@
 {
-  "output": "generated/mento.mainnet.",
-  "chain": "celo",
-  "datasources": [
-    {
-      "address": "Locking.sol address",
-      "startBlock": 0,
-      "module": [
-        "voting"
-      ]
-    },
-    {
-      "address": "TimelockController.sol address",
-      "startBlock": 0,
-      "module": [
-        "timelock",
-        "accesscontrol"
-      ]
-    },
-    {
-      "address": "MentoGovernor.sol address",
-      "startBlock": 0,
-      "module": [
-        "governor"
-      ]
-    }
-  ]
+   "output": "generated/mento.mainnet.",
+   "chain": "celo",
+   "datasources": [
+      {
+         "address": "0x001Bb66636dCd149A1A2bA8C50E408BdDd80279C",
+         "startBlock": 25901546,
+         "module": ["voting", "locking"]
+      },
+      {
+         "address": "0x890DB8A597940165901372Dd7DB61C9f246e2147",
+         "startBlock": 25901546,
+         "module": ["timelock", "accesscontrol"]
+      },
+      {
+         "address": "0x47036d78bB3169b4F5560dD77BF93f4412A59852",
+         "startBlock": 25901546,
+         "module": ["governor"]
+      }
+   ]
 }
