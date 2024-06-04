@@ -16,7 +16,7 @@
     "mainnet:codegen": "npx graph codegen ./generated/mento.mainnet.subgraph.yaml",
     "mainnet:build": "npx graph build ./generated/mento.mainnet.subgraph.yaml",
     "mainnet:build-all": "npm run clean && npm run mainnet:compile && npm run mainnet:codegen && npm run mainnet:build",
-    "mainnet:deploy": "npx graph deploy --studio mento ./generated/mento.mainnet.subgraph.yaml"
+    "mainnet:deploy": "npx graph deploy --studio mento-celo ./generated/mento.mainnet.subgraph.yaml"
   },
   "keywords": [],
   "author": "",
