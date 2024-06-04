@@ -6,7 +6,7 @@ This package uses [openzeppelin-subgraphs](https://github.com/mento-protocol/ope
 
 For the Alfajores subgraph, use our shared test wallet from LastPass to log in to <https://thegraph.com/studio/subgraph/mento-alfajores/>
 
-For Mainnet, we will deploy a Gnosis Safe when the time comes.
+For Mainnet, we will deploy a Gnosis Safe. Until then we will use the shared test wallet from LastPass.
 
 ## Commands
 
