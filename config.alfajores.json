@@ -1,5 +1,5 @@
 {
-  "output": "generated/mento.testnet.",
+  "output": "generated/mento.alfajores.",
   "chain": "celo-alfajores",
   "datasources": [
     {

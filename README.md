@@ -16,21 +16,22 @@ Will ask you to enter the deploy key (can be found on [the subgraph dashboard](h
 
 Without a deploy key you won't be able to deploy.
 
-### `npm run <target>:build-all`
+### `npm run build-all <target>`
 
-> target can be `testnet` or `mainnet`
+> target can be `alfajores`, `celo-sepolia` or `celo`.
 
 This runs the following commands:
 
-- `npm run <target>:clean`
-- `npm run <target>:compile`
-- `npm run <target>:codegen`
+- `npm run clean`
+- `npm run compile <target>`
+- `npm run codegen <target>`
+- `npm run build <target>`
 
 Will execute all the steps needed to prepare a deployment starting from a clean slate.
 
-### `npm run <target>:compile`
+### `npm run compile <target>`
 
-> target can be `testnet` or `mainnet`
+> target can be `alfajores`, `celo-sepolia` or `celo`.
 
 This step is handled by the `graph-compiler` package which composes together _modules_ configured on addresses, to generate a full graph specification that can be deploy to The Graph.
 
@@ -41,20 +42,20 @@ This will generate:
 
 This should be run when we change `config.<target>.json`
 
-### `npm run <target>:codegen`
+### `npm run codegen <target>`
 
-> target can be `testnet` or `mainnet`
+> target can be `alfajores`, `celo-sepolia` or `celo`.
 
 This step is handled by `graph-cli` and will generate utility types from ABI definitions, that are used in the WASM handlers.
 
-### `npm run <target>:build`
+### `npm run build <target>`
 
-> target can be `testnet` or `mainnet`
+> target can be `alfajores`, `celo-sepolia` or `celo`.
 
 This step is handled by `graph-cli` and will compile all the code in the final binary form needed for the Graph deployment.
 You don't usually have to run this step separately as it also happens a part of the `deploy` comand inside of `graph-cli`.
 
-### `npm run <target>:deploy`
+### `npm run deploy <target>`
 
 This will deploy the generated subgraph.
 Sometimes this results in a `socket hang up` error. Wait for a bit and retry.
