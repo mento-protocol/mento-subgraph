@@ -2,11 +2,10 @@
 
 compile() {
   local network=$1
-  local config="config.$1.json"
+  local config="config.$network.json"
   if [ ! -f $config ]; then
     echo "$config not found"
   fi
-
 
   npx graph-compiler \
     --config $config \
@@ -17,7 +16,8 @@ compile() {
 }
 
 codegen() {
-  local config="./generated/mento.$1.subgraph.yaml"
+  local network=$1
+  local config="./generated/mento.$network.subgraph.yaml"
   if [ ! -f $config ]; then
     echo "$config not found"
   fi
@@ -26,7 +26,8 @@ codegen() {
 }
 
 build() {
-  local config="./generated/mento.$1.subgraph.yaml"
+  local network=$1
+  local config="./generated/mento.$network.subgraph.yaml"
   if [ ! -f $config ]; then
     echo "$config not found"
   fi
@@ -35,7 +36,8 @@ build() {
 }
 
 deploy() {
-  local config="./generated/mento.$1.subgraph.yaml"
+  local network=$1
+  local config="./generated/mento.$network.subgraph.yaml"
   if [ ! -f $config ]; then
     echo "$config not found"
   fi
@@ -45,5 +47,5 @@ deploy() {
 
 buildAll() {
   local network=$1
-  npm run clean && compile $1 && codegen $1 && build $1
+  npm run clean && compile $network && codegen $network && build $network
 }
