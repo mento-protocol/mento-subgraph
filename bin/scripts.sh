@@ -2,9 +2,31 @@
 
 compile() {
   local network=$1
+  
+  # If no network provided, show interactive menu
+  if [ -z "$network" ]; then
+    # Find all config files and extract network names
+    local configs=($(ls config.*.json 2>/dev/null | sed 's/config\.\(.*\)\.json/\1/'))
+    
+    if [ ${#configs[@]} -eq 0 ]; then
+      echo "No config files found!"
+      exit 1
+    fi
+    
+    # Use interactive selection
+    network=$(selectNetwork "${configs[@]}")
+    echo ""
+    echo "Selected network: $network"
+    echo ""
+  fi
+  
+  # Validate that the config file exists
   local config="config.$network.json"
-  if [ ! -f $config ]; then
-    echo "$config not found"
+  if [ ! -f "$config" ]; then
+    echo "Error: $config not found"
+    echo "Available config files:"
+    ls config.*.json 2>/dev/null || echo "  No config files found"
+    exit 1
   fi
 
   npx graph-compiler \
@@ -17,9 +39,32 @@ compile() {
 
 codegen() {
   local network=$1
+  
+  # If no network provided, show interactive menu
+  if [ -z "$network" ]; then
+    # Find all config files and extract network names
+    local configs=($(ls config.*.json 2>/dev/null | sed 's/config\.\(.*\)\.json/\1/'))
+    
+    if [ ${#configs[@]} -eq 0 ]; then
+      echo "No config files found!"
+      exit 1
+    fi
+    
+    # Use interactive selection
+    network=$(selectNetwork "${configs[@]}")
+    echo ""
+    echo "Selected network: $network"
+    echo ""
+  fi
+  
+  # Validate that the generated subgraph file exists
   local config="./generated/mento.$network.subgraph.yaml"
-  if [ ! -f $config ]; then
-    echo "$config not found"
+  if [ ! -f "$config" ]; then
+    echo "Error: $config not found"
+    echo "Please run 'npm run compile $network' first to generate the subgraph manifest"
+    echo "Available config files:"
+    ls config.*.json 2>/dev/null || echo "  No config files found"
+    exit 1
   fi
 
   npx graph codegen $config
@@ -27,9 +72,32 @@ codegen() {
 
 build() {
   local network=$1
+  
+  # If no network provided, show interactive menu
+  if [ -z "$network" ]; then
+    # Find all config files and extract network names
+    local configs=($(ls config.*.json 2>/dev/null | sed 's/config\.\(.*\)\.json/\1/'))
+    
+    if [ ${#configs[@]} -eq 0 ]; then
+      echo "No config files found!"
+      exit 1
+    fi
+    
+    # Use interactive selection
+    network=$(selectNetwork "${configs[@]}")
+    echo ""
+    echo "Selected network: $network"
+    echo ""
+  fi
+  
+  # Validate that the generated subgraph file exists
   local config="./generated/mento.$network.subgraph.yaml"
-  if [ ! -f $config ]; then
-    echo "$config not found"
+  if [ ! -f "$config" ]; then
+    echo "Error: $config not found"
+    echo "Please run 'npm run compile $network' first to generate the subgraph manifest"
+    echo "Available config files:"
+    ls config.*.json 2>/dev/null || echo "  No config files found"
+    exit 1
   fi
 
   npx graph build $config
@@ -37,12 +105,34 @@ build() {
 
 deploy() {
   local network=$1
-  local config="./generated/mento.$network.subgraph.yaml"
-  if [ ! -f $config ]; then
-    echo "$config not found"
+  
+  # If no network provided, show interactive menu
+  if [ -z "$network" ]; then
+    # Find all config files and extract network names
+    local configs=($(ls config.*.json 2>/dev/null | sed 's/config\.\(.*\)\.json/\1/'))
+    
+    if [ ${#configs[@]} -eq 0 ]; then
+      echo "No config files found!"
+      exit 1
+    fi
+    
+    # Use interactive selection
+    network=$(selectNetwork "${configs[@]}")
+    echo ""
+    echo "Selected network: $network"
+    echo ""
   fi
-  npx graph deploy --studio mento-governance-$1 $config
-
+  
+  # Validate that the config file exists
+  local config="./generated/mento.$network.subgraph.yaml"
+  if [ ! -f "$config" ]; then
+    echo "Error: $config not found"
+    echo "Available config files:"
+    ls config.*.json 2>/dev/null || echo "  No config files found"
+    exit 1
+  fi
+  
+  npx graph deploy --studio mento-governance-$network $config
 }
 
 # Function to display interactive menu with arrow key navigation
