@@ -35,6 +35,27 @@ compile() {
     --include src/datasources \
     --export-schema \
     --export-subgraph
+
+  annotateEntities "$network"
+}
+
+# @openzeppelin/subgraphs (0.1.8-5, its latest) emits bare `@entity` for the
+# nine mutable entities. graph-cli >= 0.9x refuses to build that:
+#   "@entity directive requires `immutable` argument"
+# These entities ARE mutable (Account, Lock, Proposal, VoteWeight, ... are
+# updated over time), so the semantics-preserving annotation is
+# `immutable: false` — NOT the `true` the CLI's hint suggests, which would
+# break indexing. Run after every compile, because compile regenerates the
+# schema and would otherwise silently undo this.
+annotateEntities() {
+  local network=$1
+  local schema="generated/mento.$network.schema.graphql"
+  if [ ! -f "$schema" ]; then
+    echo "Error: $schema not found after compile"
+    exit 1
+  fi
+  sed -i -E 's/@entity[[:space:]]*\{/@entity(immutable: false) {/' "$schema"
+  echo "- Annotated bare @entity types in $schema with immutable: false"
 }
 
 codegen() {
