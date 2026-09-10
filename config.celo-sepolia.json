@@ -4,7 +4,7 @@
   "datasources": [
     {
       "address": "0xB72320fC501cb30E55bAF0DA48c20b11fAc9f79D",
-      "startBlock": 4640159,
+      "startBlock": 35771481,
       "module": [
         "voting",
         "locking"
@@ -12,7 +12,7 @@
     },
     {
       "address": "0x74c44Be99937815173A3C56274331e0A05611e0D",
-      "startBlock": 4640213,
+      "startBlock": 35771481,
       "module": [
         "timelock",
         "accesscontrol"
@@ -20,7 +20,7 @@
     },
     {
       "address": "0x23173Ac37b8E4e5a60d787aC543B3F51e8f398b4",
-      "startBlock": 4640248,
+      "startBlock": 35771481,
       "module": [
         "governor"
       ]
