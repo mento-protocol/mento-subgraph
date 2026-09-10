@@ -29,12 +29,17 @@ compile() {
     exit 1
   fi
 
-  npx graph-compiler \
+  # Fail fast on compiler errors. Without this, a stale generated/ schema from a
+  # previous run would let annotateEntities succeed and mask the failure.
+  if ! npx graph-compiler \
     --config $config \
     --include node_modules/@openzeppelin/subgraphs/src/datasources \
     --include src/datasources \
     --export-schema \
-    --export-subgraph
+    --export-subgraph; then
+    echo "Error: graph-compiler failed for $network"
+    return 1
+  fi
 
   annotateEntities "$network"
 }
