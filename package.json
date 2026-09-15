@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "auth": "npx graph auth --product hosted-service",
-    "auth:studio": "graph auth --studio",
+    "auth": "npx graph auth --studio",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./generated",
     "compile": "source ./bin/scripts.sh && compile",
@@ -19,13 +18,13 @@
   "license": "ISC",
   "dependencies": {
     "@amxx/graphprotocol-utils": "^1.1.0",
-    "@graphprotocol/graph-cli": "^0.65.0",
+    "@graphprotocol/graph-cli": "^0.98.1",
     "@graphprotocol/graph-ts": "^0.32.0",
     "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/subgraphs": "openzeppelin/openzeppelin-subgraphs"
   },
   "overrides": {
-    "@graphprotocol/graph-cli": "^0.65.0",
+    "@graphprotocol/graph-cli": "^0.98.1",
     "@graphprotocol/graph-ts": "^0.32.0"
   }
 }
